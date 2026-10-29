@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <h1>Number Guess between 1 to 100</h1>
+        <input type="text" id="number" placeholder="Enter a Number..">
+        <button id="guessBtn">Guess</button>
+        <h2 id="result"></h2>
+        <h3 id="attemps"></h3>
+    </div>
+
+    <script>
+        let number = document.getElementById("number");
+        let guessBtn = document.getElementById("guessBtn");
+        let result = document.getElementById("result");
+        let attemps = document.getElementById("attemps");
+        let attempsCnt = 0;
+        let randomNumber = Math.floor(Math.random() * 100)+1;
+
+        guessBtn.addEventListener("click" , function(){
+            let num = Number(number.value);
+            if(number.value < 1 || number.value > 100){
+                result.innerText = "please enter 1 to 100";
+                return;
+            }
+
+            attempsCnt++;
+
+            attemps.innerText = "Attemps : " + attempsCnt;
+
+            if(num > randomNumber){
+                result.innerText = "Too High";
+            }else if(num < randomNumber){
+                result.innerText = "Too Low";
+            }else{
+                result.innerText = "congratulation you correct!!";
+            }
+
+        })
+    </script>
+</body>
+</html>
